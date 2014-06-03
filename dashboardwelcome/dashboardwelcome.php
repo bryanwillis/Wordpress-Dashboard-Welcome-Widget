@@ -12,31 +12,34 @@ License:
 // CREATES THE NEW SIDEBAR FOR WELCOME PANEL
 add_action( 'widgets_init', 'brwacefg_register_welcome_as_sidebar_widget_sidebars');
 function brwacefg_register_welcome_as_sidebar_widget_sidebars(){
-    register_sidebar(array(
-        'name' => 'Admin Only Dashboard Welcome',
-		'id' => 'brwacefgwpwelcomedash',
-        'description' => 'Widgets in this area will replace the admin dashboard welcome panel',
-        'before_title' => '<h3>',
-        'after_title' => '</h3>',
-        'before_widget' => '',
-        'after_widget' => ''
+   register_sidebar ( array (
+        'name'          =>  'Admin Only Dashboard Welcome',
+	'id'            =>  'brwacefgwpwelcomedash',
+        'description'   =>  'Widgets in this area will replace the admin dashboard welcome panel',
+        'before_title'  =>  '<h3>',
+        'after_title'   =>  '</h3>',
+        'before_widget' =>  '',
+        'after_widget'  =>  ''
     ));
 }
 
+
 // FUNCTION THAT RENDERS THE NEW WELCOME PANEL
 function brwacefg_welcome_as_sidebar_widget() {
-ob_start(); ?>
-	<div class="welcome-panel-content">
-       <?php dynamic_sidebar( 'brwacefgwpwelcomedash' ); ?>
-	</div>
-<?php
-echo ob_get_clean();
+	ob_start(); ?>
+			<div class="welcome-panel-content">
+	 			<?php dynamic_sidebar( 'brwacefgwpwelcomedash' ); ?>
+			</div>
+       	<?php
+        echo ob_get_clean();
 }
 
 // LOGIC TO ONLY SHOW WHEN ACTIVE OTHERWISE REMOVE THE WELCOME PANEL
-if ( is_active_sidebar( 'brwacefgwpwelcomedash' ) ) {
-remove_action( 'welcome_panel', 'wp_welcome_panel' );
-add_action( 'welcome_panel', 'brwacefg_welcome_as_sidebar_widget' );
-}  else {
-remove_action( 'welcome_panel', 'wp_welcome_panel' );
-};
+if ( is_active_sidebar( 'brwacefgwpwelcomedash' ) ) 
+	{
+		remove_action( 'welcome_panel', 'wp_welcome_panel' );
+		add_action( 'welcome_panel', 'brwacefg_welcome_as_sidebar_widget' );
+	}  
+	else {
+		remove_action( 'welcome_panel', 'wp_welcome_panel' );
+	};
