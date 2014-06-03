@@ -3,7 +3,7 @@
 Plugin Name: Custom Dashboard Welcome Panel Widget Sidebar
 Plugin URI: https://github.com/Candid-Business-Communication-Solutions
 Description: This plugin registers a new sidebar widget to be used on the ADMIN SIDE ONLY. When active it replaces the WP Welcome Panel Dashboard Widget.
-Version: 0.1
+Version: 1.0
 Author: Bryan Willis
 Author Email: businesscandid@gmail.com
 License:
